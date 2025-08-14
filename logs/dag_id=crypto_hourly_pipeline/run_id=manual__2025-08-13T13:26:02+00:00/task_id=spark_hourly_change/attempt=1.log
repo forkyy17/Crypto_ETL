@@ -1,0 +1,31 @@
+[2025-08-13T13:27:04.713+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T13:27:04.732+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change manual__2025-08-13T13:26:02+00:00 [queued]>
+[2025-08-13T13:27:04.737+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change manual__2025-08-13T13:26:02+00:00 [queued]>
+[2025-08-13T13:27:04.737+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-13T13:27:04.743+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): spark_hourly_change> on 2025-08-13 13:26:02+00:00
+[2025-08-13T13:27:04.751+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'spark_hourly_change', 'manual__2025-08-13T13:26:02+00:00', '--job-id', '72', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmpy09jv81t']
+[2025-08-13T13:27:04.754+0000] {standard_task_runner.py:91} INFO - Job 72: Subtask spark_hourly_change
+[2025-08-13T13:27:04.754+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1511) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-13T13:27:04.756+0000] {standard_task_runner.py:63} INFO - Started process 1512 to run task
+[2025-08-13T13:27:04.806+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.spark_hourly_change manual__2025-08-13T13:26:02+00:00 [running]> on host b82b307306f9
+[2025-08-13T13:27:04.875+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='spark_hourly_change' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T13:26:02+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-08-13T13:26:02+00:00'
+[2025-08-13T13:27:04.876+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T13:27:04.885+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-13T13:27:04.886+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python spark_hourly_change.py']
+[2025-08-13T13:27:04.890+0000] {subprocess.py:86} INFO - Output:
+[2025-08-13T13:27:05.695+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:05,695 - INFO - Starting hourly change calculation...
+[2025-08-13T13:27:06.699+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-08-13T13:27:06.701+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-08-13T13:27:06.804+0000] {subprocess.py:93} INFO - 25/08/13 13:27:06 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-08-13T13:27:07.894+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:07,890 - INFO - Spark session created successfully
+[2025-08-13T13:27:08.061+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:08,061 - INFO - Successfully read 400 records from PostgreSQL
+[2025-08-13T13:27:11.948+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 8) / 8]                                                                                2025-08-13 13:27:11,944 - INFO - Calculated hourly changes for 400 records
+[2025-08-13T13:27:13.065+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:13,062 - INFO - Successfully wrote 400 records to ClickHouse
+[2025-08-13T13:27:13.079+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:13,063 - INFO - Hourly change calculation completed successfully!
+[2025-08-13T13:27:13.923+0000] {subprocess.py:93} INFO - 2025-08-13 13:27:13,923 - INFO - Closing down clientserver connection
+[2025-08-13T13:27:14.496+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-13T13:27:14.499+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T13:27:14.560+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=crypto_hourly_pipeline, task_id=spark_hourly_change, run_id=manual__2025-08-13T13:26:02+00:00, execution_date=20250813T132602, start_date=20250813T132704, end_date=20250813T132714
+[2025-08-13T13:27:14.577+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-13T13:27:14.621+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T13:27:14.622+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

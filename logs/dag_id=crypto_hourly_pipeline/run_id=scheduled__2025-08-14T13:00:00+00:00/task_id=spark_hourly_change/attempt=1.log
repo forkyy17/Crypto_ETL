@@ -1,0 +1,137 @@
+[2025-08-14T14:00:05.471+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T14:00:05.678+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-14T13:00:00+00:00 [queued]>
+[2025-08-14T14:00:05.694+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-14T13:00:00+00:00 [queued]>
+[2025-08-14T14:00:05.695+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-14T14:00:05.731+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): spark_hourly_change> on 2025-08-14 13:00:00+00:00
+[2025-08-14T14:00:05.765+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'spark_hourly_change', 'scheduled__2025-08-14T13:00:00+00:00', '--job-id', '158', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmppa37kmgs']
+[2025-08-14T14:00:05.787+0000] {standard_task_runner.py:91} INFO - Job 158: Subtask spark_hourly_change
+[2025-08-14T14:00:05.819+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=14113) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-14T14:00:05.821+0000] {standard_task_runner.py:63} INFO - Started process 14114 to run task
+[2025-08-14T14:00:05.910+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-14T13:00:00+00:00 [running]> on host 26ef60e976b3
+[2025-08-14T14:00:05.999+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='spark_hourly_change' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T13:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-14T13:00:00+00:00'
+[2025-08-14T14:00:06.000+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T14:00:06.015+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T14:00:06.017+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python spark_hourly_change.py']
+[2025-08-14T14:00:06.032+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T14:00:07.373+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:07,372 - INFO - Starting hourly change calculation...
+[2025-08-14T14:00:09.752+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-08-14T14:00:09.755+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-08-14T14:00:10.022+0000] {subprocess.py:93} INFO - 25/08/14 14:00:10 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-08-14T14:00:11.971+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:11,970 - INFO - Spark session created successfully
+[2025-08-14T14:00:12.216+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:12,216 - INFO - Successfully read 200 records from PostgreSQL
+[2025-08-14T14:00:25.773+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 8) / 8]                                                                                2025-08-14 14:00:25,767 - INFO - Calculated hourly changes for 200 records
+[2025-08-14T14:00:27.980+0000] {subprocess.py:93} INFO - [Stage 3:>                                                          (0 + 8) / 8]                                                                                2025-08-14 14:00:27,978 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=0, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff78add070>: Failed to establish a new connection: [Errno 111] Connection refused')': /?
+[2025-08-14T14:00:27.983+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:27,980 - WARNING - Unexpected Http Driver Exception
+[2025-08-14T14:00:27.984+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:27,981 - ERROR - Error writing to ClickHouse: Error HTTPConnectionPool(host='clickhouse', port=8123): Max retries exceeded with url: /? (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff78adeae0>: Failed to establish a new connection: [Errno 111] Connection refused')) executing HTTP request attempt 1 (http://clickhouse:8123)
+[2025-08-14T14:00:27.984+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:27,981 - ERROR - Hourly change calculation failed: Error HTTPConnectionPool(host='clickhouse', port=8123): Max retries exceeded with url: /? (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff78adeae0>: Failed to establish a new connection: [Errno 111] Connection refused')) executing HTTP request attempt 1 (http://clickhouse:8123)
+[2025-08-14T14:00:27.985+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T14:00:27.985+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 174, in _new_conn
+[2025-08-14T14:00:27.987+0000] {subprocess.py:93} INFO -     conn = connection.create_connection(
+[2025-08-14T14:00:27.987+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.987+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 95, in create_connection
+[2025-08-14T14:00:27.987+0000] {subprocess.py:93} INFO -     raise err
+[2025-08-14T14:00:27.988+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 85, in create_connection
+[2025-08-14T14:00:27.988+0000] {subprocess.py:93} INFO -     sock.connect(sa)
+[2025-08-14T14:00:27.988+0000] {subprocess.py:93} INFO - ConnectionRefusedError: [Errno 111] Connection refused
+[2025-08-14T14:00:27.988+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.988+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-08-14T14:00:27.989+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.989+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T14:00:27.989+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -     httplib_response = self._make_request(
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 416, in _make_request
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -     conn.request(method, url, **httplib_request_kw)
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 244, in request
+[2025-08-14T14:00:27.990+0000] {subprocess.py:93} INFO -     super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+[2025-08-14T14:00:27.991+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1336, in request
+[2025-08-14T14:00:27.991+0000] {subprocess.py:93} INFO -     self._send_request(method, url, body, headers, encode_chunked)
+[2025-08-14T14:00:27.991+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1382, in _send_request
+[2025-08-14T14:00:27.991+0000] {subprocess.py:93} INFO -     self.endheaders(body, encode_chunked=encode_chunked)
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -     self._send_output(message_body, encode_chunked=encode_chunked)
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -     self.send(msg)
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+[2025-08-14T14:00:27.992+0000] {subprocess.py:93} INFO -     self.connect()
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 205, in connect
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO -     conn = self._new_conn()
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 186, in _new_conn
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO -     raise NewConnectionError(
+[2025-08-14T14:00:27.993+0000] {subprocess.py:93} INFO - urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0xffff78adeae0>: Failed to establish a new connection: [Errno 111] Connection refused
+[2025-08-14T14:00:27.994+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.994+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-08-14T14:00:27.994+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.994+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T14:00:27.994+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 456, in _raw_request
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -     response = self.http.request(method, url, **kwargs)
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/request.py", line 81, in request
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -     return self.request_encode_body(
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.995+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/request.py", line 173, in request_encode_body
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -     return self.urlopen(method, url, **extra_kw)
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/poolmanager.py", line 376, in urlopen
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -     response = conn.urlopen(method, u.request_uri, **kw)
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.996+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 830, in urlopen
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -     return self.urlopen(
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.997+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 594, in increment
+[2025-08-14T14:00:27.998+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, error or ResponseError(cause))
+[2025-08-14T14:00:27.998+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='clickhouse', port=8123): Max retries exceeded with url: /? (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff78adeae0>: Failed to establish a new connection: [Errno 111] Connection refused'))
+[2025-08-14T14:00:27.998+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.998+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-08-14T14:00:27.998+0000] {subprocess.py:93} INFO - 
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 183, in <module>
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -     main()
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -     ^^^^^^
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 171, in main
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -     write_to_clickhouse(filtered_df)
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 140, in write_to_clickhouse
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -     client = clickhouse_connect.get_client(**CLICKHOUSE_CONFIG)
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:27.999+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/__init__.py", line 122, in create_client
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -     return HttpClient(interface, host, port, username, password, database, access_token,
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 165, in __init__
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -     super().__init__(database=database,
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 70, in __init__
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -     self._init_common_settings(apply_server_timezone)
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/client.py", line 75, in _init_common_settings
+[2025-08-14T14:00:28.000+0000] {subprocess.py:93} INFO -     tuple(self.command('SELECT version(), timezone()', use_database=False))
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 368, in command
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -     response = self._raw_request(payload, params, headers, method, fields=fields, server_wait=False)
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/clickhouse_connect/driver/httpclient.py", line 468, in _raw_request
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO -     raise OperationalError(f'Error {ex} executing HTTP request attempt {attempts}{err_url}') from ex
+[2025-08-14T14:00:28.001+0000] {subprocess.py:93} INFO - clickhouse_connect.driver.exceptions.OperationalError: Error HTTPConnectionPool(host='clickhouse', port=8123): Max retries exceeded with url: /? (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0xffff78adeae0>: Failed to establish a new connection: [Errno 111] Connection refused')) executing HTTP request attempt 1 (http://clickhouse:8123)
+[2025-08-14T14:00:28.042+0000] {subprocess.py:93} INFO - 2025-08-14 14:00:28,040 - INFO - Closing down clientserver connection
+[2025-08-14T14:00:29.688+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-08-14T14:00:29.725+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T14:00:29.881+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-08-14T14:00:29.906+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crypto_hourly_pipeline, task_id=spark_hourly_change, run_id=scheduled__2025-08-14T13:00:00+00:00, execution_date=20250814T130000, start_date=20250814T140005, end_date=20250814T140029
+[2025-08-14T14:00:29.953+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 158 for task spark_hourly_change (Bash command failed. The command returned a non-zero exit code 1.; 14114)
+[2025-08-14T14:00:30.021+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-14T14:00:30.455+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T14:00:30.463+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

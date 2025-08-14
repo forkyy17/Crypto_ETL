@@ -1,0 +1,38 @@
+[2025-08-14T11:12:56.870+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T11:12:57.024+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-14T10:00:00+00:00 [queued]>
+[2025-08-14T11:12:57.034+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-14T10:00:00+00:00 [queued]>
+[2025-08-14T11:12:57.034+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-14T11:12:57.054+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_hourly_gainers> on 2025-08-14 10:00:00+00:00
+[2025-08-14T11:12:57.088+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'dbt_hourly_gainers', 'scheduled__2025-08-14T10:00:00+00:00', '--job-id', '149', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmp5emnh94b']
+[2025-08-14T11:12:57.092+0000] {standard_task_runner.py:91} INFO - Job 149: Subtask dbt_hourly_gainers
+[2025-08-14T11:12:57.160+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=11955) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-14T11:12:57.164+0000] {standard_task_runner.py:63} INFO - Started process 11956 to run task
+[2025-08-14T11:12:57.177+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-14T10:00:00+00:00 [running]> on host 26ef60e976b3
+[2025-08-14T11:12:57.318+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='dbt_hourly_gainers' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-14T10:00:00+00:00'
+[2025-08-14T11:12:57.319+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T11:12:57.369+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T11:12:57.372+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project/dbt && dbt deps && dbt run --select crypto_hourly_gainers']
+[2025-08-14T11:12:57.409+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T11:13:01.400+0000] {subprocess.py:93} INFO - [0m11:13:01  Running with dbt=1.7.19
+[2025-08-14T11:13:01.509+0000] {subprocess.py:93} INFO - [0m11:13:01  Warning: No packages were found in packages.yml
+[2025-08-14T11:13:01.512+0000] {subprocess.py:93} INFO - [0m11:13:01  Warning: No packages were found in packages.yml
+[2025-08-14T11:13:05.138+0000] {subprocess.py:93} INFO - [0m11:13:05  Running with dbt=1.7.19
+[2025-08-14T11:13:05.364+0000] {subprocess.py:93} INFO - [0m11:13:05  Registered adapter: clickhouse=1.7.7
+[2025-08-14T11:13:05.432+0000] {subprocess.py:93} INFO - [0m11:13:05  Found 1 model, 0 sources, 0 exposures, 0 metrics, 429 macros, 0 groups, 0 semantic models
+[2025-08-14T11:13:05.434+0000] {subprocess.py:93} INFO - [0m11:13:05
+[2025-08-14T11:13:06.692+0000] {subprocess.py:93} INFO - [0m11:13:06  Concurrency: 4 threads (target='dev')
+[2025-08-14T11:13:06.695+0000] {subprocess.py:93} INFO - [0m11:13:06
+[2025-08-14T11:13:06.706+0000] {subprocess.py:93} INFO - [0m11:13:06  1 of 1 START sql table model `analytics`.`crypto_hourly_gainers` ............... [RUN]
+[2025-08-14T11:13:06.861+0000] {subprocess.py:93} INFO - [0m11:13:06  1 of 1 OK created sql table model `analytics`.`crypto_hourly_gainers` .......... [[32mOK[0m in 0.15s]
+[2025-08-14T11:13:06.864+0000] {subprocess.py:93} INFO - [0m11:13:06
+[2025-08-14T11:13:06.865+0000] {subprocess.py:93} INFO - [0m11:13:06  Finished running 1 table model in 0 hours 0 minutes and 1.43 seconds (1.43s).
+[2025-08-14T11:13:06.890+0000] {subprocess.py:93} INFO - [0m11:13:06
+[2025-08-14T11:13:06.891+0000] {subprocess.py:93} INFO - [0m11:13:06  [32mCompleted successfully[0m
+[2025-08-14T11:13:06.893+0000] {subprocess.py:93} INFO - [0m11:13:06
+[2025-08-14T11:13:06.895+0000] {subprocess.py:93} INFO - [0m11:13:06  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+[2025-08-14T11:13:08.490+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-14T11:13:08.496+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T11:13:08.565+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=crypto_hourly_pipeline, task_id=dbt_hourly_gainers, run_id=scheduled__2025-08-14T10:00:00+00:00, execution_date=20250814T100000, start_date=20250814T111257, end_date=20250814T111308
+[2025-08-14T11:13:08.593+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-14T11:13:08.636+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T11:13:08.637+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

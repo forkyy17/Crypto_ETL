@@ -1,0 +1,26 @@
+[2025-08-14T06:09:16.517+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T06:09:16.576+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T05:00:00+00:00 [queued]>
+[2025-08-14T06:09:16.592+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T05:00:00+00:00 [queued]>
+[2025-08-14T06:09:16.594+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-14T06:09:16.608+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_cmc> on 2025-08-14 05:00:00+00:00
+[2025-08-14T06:09:16.613+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'ingest_cmc', 'scheduled__2025-08-14T05:00:00+00:00', '--job-id', '131', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmp720m4sbs']
+[2025-08-14T06:09:16.616+0000] {standard_task_runner.py:91} INFO - Job 131: Subtask ingest_cmc
+[2025-08-14T06:09:16.630+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=7966) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-14T06:09:16.631+0000] {standard_task_runner.py:63} INFO - Started process 7970 to run task
+[2025-08-14T06:09:16.707+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T05:00:00+00:00 [running]> on host 26ef60e976b3
+[2025-08-14T06:09:16.847+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='ingest_cmc' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T05:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-14T05:00:00+00:00'
+[2025-08-14T06:09:16.849+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T06:09:16.861+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T06:09:16.866+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python ingest_cmc.py']
+[2025-08-14T06:09:16.878+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T06:09:17.404+0000] {subprocess.py:93} INFO - 2025-08-14 06:09:17,403 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-14T06:09:17.827+0000] {subprocess.py:93} INFO - 2025-08-14 06:09:17,827 - INFO - Successfully fetched 100 cryptocurrencies
+[2025-08-14T06:09:17.829+0000] {subprocess.py:93} INFO - 2025-08-14 06:09:17,829 - INFO - Processed 100 records
+[2025-08-14T06:09:17.854+0000] {subprocess.py:93} INFO - 2025-08-14 06:09:17,854 - INFO - Successfully inserted 100 records into PostgreSQL
+[2025-08-14T06:09:17.854+0000] {subprocess.py:93} INFO - 2025-08-14 06:09:17,854 - INFO - Data ingestion completed successfully!
+[2025-08-14T06:09:17.888+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-08-14T06:09:17.889+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T06:09:17.911+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=crypto_hourly_pipeline, task_id=ingest_cmc, run_id=scheduled__2025-08-14T05:00:00+00:00, execution_date=20250814T050000, start_date=20250814T060916, end_date=20250814T060917
+[2025-08-14T06:09:17.941+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-08-14T06:09:17.984+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T06:09:17.986+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,63 @@
+[2025-08-13T15:20:41.720+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T15:20:41.754+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-13T14:00:00+00:00 [queued]>
+[2025-08-13T15:20:41.758+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-13T14:00:00+00:00 [queued]>
+[2025-08-13T15:20:41.758+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-13T15:20:41.764+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_hourly_gainers> on 2025-08-13 14:00:00+00:00
+[2025-08-13T15:20:41.768+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'dbt_hourly_gainers', 'scheduled__2025-08-13T14:00:00+00:00', '--job-id', '81', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmpyimjl0q6']
+[2025-08-13T15:20:41.771+0000] {standard_task_runner.py:91} INFO - Job 81: Subtask dbt_hourly_gainers
+[2025-08-13T15:20:41.774+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=422) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-13T15:20:41.774+0000] {standard_task_runner.py:63} INFO - Started process 423 to run task
+[2025-08-13T15:20:41.807+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.dbt_hourly_gainers scheduled__2025-08-13T14:00:00+00:00 [running]> on host 26ef60e976b3
+[2025-08-13T15:20:41.862+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='dbt_hourly_gainers' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T14:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-13T14:00:00+00:00'
+[2025-08-13T15:20:41.863+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T15:20:41.872+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-13T15:20:41.874+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project/dbt && dbt deps && dbt run --select crypto_hourly_gainers']
+[2025-08-13T15:20:41.881+0000] {subprocess.py:86} INFO - Output:
+[2025-08-13T15:20:44.315+0000] {subprocess.py:93} INFO - [0m15:20:44  Running with dbt=1.7.19
+[2025-08-13T15:20:44.440+0000] {subprocess.py:93} INFO - [0m15:20:44  Warning: No packages were found in packages.yml
+[2025-08-13T15:20:44.442+0000] {subprocess.py:93} INFO - [0m15:20:44  Warning: No packages were found in packages.yml
+[2025-08-13T15:20:47.178+0000] {subprocess.py:93} INFO - [0m15:20:47  Running with dbt=1.7.19
+[2025-08-13T15:20:47.185+0000] {subprocess.py:93} INFO - [0m15:20:47  Encountered an error:
+[2025-08-13T15:20:47.185+0000] {subprocess.py:93} INFO - Runtime Error
+[2025-08-13T15:20:47.186+0000] {subprocess.py:93} INFO - 
+[2025-08-13T15:20:47.186+0000] {subprocess.py:93} INFO -   dbt encountered an error while trying to read your profiles.yml file.
+[2025-08-13T15:20:47.186+0000] {subprocess.py:93} INFO - 
+[2025-08-13T15:20:47.186+0000] {subprocess.py:93} INFO -   Runtime Error
+[2025-08-13T15:20:47.187+0000] {subprocess.py:93} INFO -     Syntax error near line 7
+[2025-08-13T15:20:47.187+0000] {subprocess.py:93} INFO -     ------------------------------
+[2025-08-13T15:20:47.187+0000] {subprocess.py:93} INFO -     4  |     dev:
+[2025-08-13T15:20:47.187+0000] {subprocess.py:93} INFO -     5  |       type: clickhouse
+[2025-08-13T15:20:47.187+0000] {subprocess.py:93} INFO -     6  |       schema: analytics
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     7  |       host: {{ env_var('CLICKHOUSE_HOST', 'clickhouse') }}
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     8  |       port: {{ env_var('CLICKHOUSE_PORT', '8123') }}
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     9  |       user: {{ env_var('CLICKHOUSE_USER', 'default') }}
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     10 |       password: {{ env_var('CLICKHOUSE_PASSWORD', '') }}
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO - 
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     Raw Error:
+[2025-08-13T15:20:47.188+0000] {subprocess.py:93} INFO -     ------------------------------
+[2025-08-13T15:20:47.189+0000] {subprocess.py:93} INFO -     while parsing a flow mapping
+[2025-08-13T15:20:47.189+0000] {subprocess.py:93} INFO -       in "<unicode string>", line 7, column 14
+[2025-08-13T15:20:47.189+0000] {subprocess.py:93} INFO -     did not find expected ',' or '}'
+[2025-08-13T15:20:47.189+0000] {subprocess.py:93} INFO -       in "<unicode string>", line 7, column 55
+[2025-08-13T15:20:47.189+0000] {subprocess.py:93} INFO - 
+[2025-08-13T15:20:47.930+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2025-08-13T15:20:47.931+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T15:20:47.949+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-08-13T15:20:47.955+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crypto_hourly_pipeline, task_id=dbt_hourly_gainers, run_id=scheduled__2025-08-13T14:00:00+00:00, execution_date=20250813T140000, start_date=20250813T152041, end_date=20250813T152047
+[2025-08-13T15:20:47.966+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 81 for task dbt_hourly_gainers (Bash command failed. The command returned a non-zero exit code 2.; 423)
+[2025-08-13T15:20:48.008+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-13T15:20:48.022+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T15:20:48.023+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

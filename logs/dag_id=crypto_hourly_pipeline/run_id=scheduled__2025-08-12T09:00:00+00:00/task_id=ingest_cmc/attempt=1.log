@@ -1,0 +1,71 @@
+[2025-08-12T10:00:01.176+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-12T10:00:01.251+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T09:00:00+00:00 [queued]>
+[2025-08-12T10:00:01.257+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T09:00:00+00:00 [queued]>
+[2025-08-12T10:00:01.257+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-12T10:00:01.268+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_cmc> on 2025-08-12 09:00:00+00:00
+[2025-08-12T10:00:01.284+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=345) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-12T10:00:01.285+0000] {standard_task_runner.py:63} INFO - Started process 346 to run task
+[2025-08-12T10:00:01.283+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'ingest_cmc', 'scheduled__2025-08-12T09:00:00+00:00', '--job-id', '4', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmpptoivq61']
+[2025-08-12T10:00:01.287+0000] {standard_task_runner.py:91} INFO - Job 4: Subtask ingest_cmc
+[2025-08-12T10:00:01.356+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T09:00:00+00:00 [running]> on host 93b3870592ea
+[2025-08-12T10:00:01.457+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='ingest_cmc' AIRFLOW_CTX_EXECUTION_DATE='2025-08-12T09:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-12T09:00:00+00:00'
+[2025-08-12T10:00:01.458+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-12T10:00:01.491+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-12T10:00:01.506+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python ingest_cmc.py']
+[2025-08-12T10:00:01.517+0000] {subprocess.py:86} INFO - Output:
+[2025-08-12T10:00:02.231+0000] {subprocess.py:93} INFO - 2025-08-12 10:00:02,231 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-12T10:00:03.328+0000] {subprocess.py:93} INFO - 2025-08-12 10:00:03,326 - INFO - Successfully fetched 100 cryptocurrencies
+[2025-08-12T10:00:03.335+0000] {subprocess.py:93} INFO - 2025-08-12 10:00:03,331 - INFO - Processed 100 records
+[2025-08-12T10:00:03.343+0000] {subprocess.py:93} INFO - 2025-08-12 10:00:03,342 - ERROR - Error inserting data: connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.343+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.344+0000] {subprocess.py:93} INFO - Multiple connection attempts failed. All failures were:
+[2025-08-12T10:00:03.344+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '::1': connection failed: connection to server at "::1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.345+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.345+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.345+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.346+0000] {subprocess.py:93} INFO - 2025-08-12 10:00:03,342 - ERROR - Data ingestion failed: connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.346+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.347+0000] {subprocess.py:93} INFO - Multiple connection attempts failed. All failures were:
+[2025-08-12T10:00:03.347+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '::1': connection failed: connection to server at "::1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.348+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.348+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.348+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.349+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-12T10:00:03.349+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 121, in <module>
+[2025-08-12T10:00:03.350+0000] {subprocess.py:93} INFO -     main()
+[2025-08-12T10:00:03.350+0000] {subprocess.py:93} INFO -     ^^^^^^
+[2025-08-12T10:00:03.350+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 112, in main
+[2025-08-12T10:00:03.351+0000] {subprocess.py:93} INFO -     insert_to_postgres(processed_data)
+[2025-08-12T10:00:03.351+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 80, in insert_to_postgres
+[2025-08-12T10:00:03.352+0000] {subprocess.py:93} INFO -     with psycopg.connect(**DB_CONFIG) as conn:
+[2025-08-12T10:00:03.352+0000] {subprocess.py:93} INFO -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-12T10:00:03.352+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/psycopg/connection.py", line 125, in connect
+[2025-08-12T10:00:03.352+0000] {subprocess.py:93} INFO -     raise type(last_ex)("\n".join(lines)).with_traceback(None)
+[2025-08-12T10:00:03.353+0000] {subprocess.py:93} INFO - psycopg.OperationalError: connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.353+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.353+0000] {subprocess.py:93} INFO - Multiple connection attempts failed. All failures were:
+[2025-08-12T10:00:03.353+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '::1': connection failed: connection to server at "::1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.354+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.354+0000] {subprocess.py:93} INFO - - host: 'localhost', port: '5433', hostaddr: '127.0.0.1': connection failed: connection to server at "127.0.0.1", port 5433 failed: Connection refused
+[2025-08-12T10:00:03.354+0000] {subprocess.py:93} INFO - 	Is the server running on that host and accepting TCP/IP connections?
+[2025-08-12T10:00:03.396+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-08-12T10:00:03.398+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-12T10:00:03.418+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-08-12T10:00:03.425+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crypto_hourly_pipeline, task_id=ingest_cmc, run_id=scheduled__2025-08-12T09:00:00+00:00, execution_date=20250812T090000, start_date=20250812T100001, end_date=20250812T100003
+[2025-08-12T10:00:03.444+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 4 for task ingest_cmc (Bash command failed. The command returned a non-zero exit code 1.; 346)
+[2025-08-12T10:00:03.464+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-12T10:00:03.514+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-12T10:00:03.516+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

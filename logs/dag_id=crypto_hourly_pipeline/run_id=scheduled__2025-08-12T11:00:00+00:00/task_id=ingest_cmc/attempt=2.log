@@ -1,0 +1,26 @@
+[2025-08-12T12:24:06.874+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-12T12:24:06.906+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T11:00:00+00:00 [queued]>
+[2025-08-12T12:24:06.911+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T11:00:00+00:00 [queued]>
+[2025-08-12T12:24:06.911+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-08-12T12:24:06.918+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_cmc> on 2025-08-12 11:00:00+00:00
+[2025-08-12T12:24:06.925+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'ingest_cmc', 'scheduled__2025-08-12T11:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmp1di6854k']
+[2025-08-12T12:24:06.928+0000] {standard_task_runner.py:91} INFO - Job 9: Subtask ingest_cmc
+[2025-08-12T12:24:06.928+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=530) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-12T12:24:06.930+0000] {standard_task_runner.py:63} INFO - Started process 531 to run task
+[2025-08-12T12:24:06.985+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-12T11:00:00+00:00 [running]> on host 93b3870592ea
+[2025-08-12T12:24:07.064+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='ingest_cmc' AIRFLOW_CTX_EXECUTION_DATE='2025-08-12T11:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-12T11:00:00+00:00'
+[2025-08-12T12:24:07.065+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-12T12:24:07.076+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-12T12:24:07.080+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python ingest_cmc.py']
+[2025-08-12T12:24:07.091+0000] {subprocess.py:86} INFO - Output:
+[2025-08-12T12:24:07.692+0000] {subprocess.py:93} INFO - 2025-08-12 12:24:07,692 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-12T13:14:30.719+0000] {subprocess.py:93} INFO - 2025-08-12 13:14:30,715 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-12T13:14:39.018+0000] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-08-12T13:14:39.065+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-08-12T13:14:39.164+0000] {process_utils.py:132} INFO - Sending 15 to group 531. PIDs of all processes in the group: [532, 531]
+[2025-08-12T13:14:39.166+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 531
+[2025-08-12T13:14:39.169+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-08-12T13:14:39.174+0000] {subprocess.py:104} INFO - Sending SIGTERM signal to process group
+[2025-08-12T13:14:39.197+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-12T13:14:39.418+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=531, status='terminated', exitcode=0, started='12:24:06') (531) terminated with exit code 0
+[2025-08-12T13:14:39.425+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=532, status='terminated', started='12:24:07') (532) terminated with exit code None

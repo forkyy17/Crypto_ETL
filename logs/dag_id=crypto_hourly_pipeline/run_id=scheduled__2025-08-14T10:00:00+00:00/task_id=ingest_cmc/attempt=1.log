@@ -1,0 +1,128 @@
+[2025-08-14T11:07:39.292+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-14T11:07:39.410+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T10:00:00+00:00 [queued]>
+[2025-08-14T11:07:39.417+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T10:00:00+00:00 [queued]>
+[2025-08-14T11:07:39.418+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-08-14T11:07:39.435+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_cmc> on 2025-08-14 10:00:00+00:00
+[2025-08-14T11:07:39.455+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'ingest_cmc', 'scheduled__2025-08-14T10:00:00+00:00', '--job-id', '146', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmpt7frx7yy']
+[2025-08-14T11:07:39.461+0000] {standard_task_runner.py:91} INFO - Job 146: Subtask ingest_cmc
+[2025-08-14T11:07:39.478+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=11651) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-14T11:07:39.480+0000] {standard_task_runner.py:63} INFO - Started process 11652 to run task
+[2025-08-14T11:07:39.543+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.ingest_cmc scheduled__2025-08-14T10:00:00+00:00 [running]> on host 26ef60e976b3
+[2025-08-14T11:07:39.706+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='ingest_cmc' AIRFLOW_CTX_EXECUTION_DATE='2025-08-14T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-14T10:00:00+00:00'
+[2025-08-14T11:07:39.708+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-14T11:07:39.736+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-14T11:07:39.739+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python ingest_cmc.py']
+[2025-08-14T11:07:39.747+0000] {subprocess.py:86} INFO - Output:
+[2025-08-14T11:07:40.569+0000] {subprocess.py:93} INFO - 2025-08-14 11:07:40,568 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-14T11:07:44.621+0000] {subprocess.py:93} INFO - 2025-08-14 11:07:44,618 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-14T11:07:48.654+0000] {subprocess.py:93} INFO - 2025-08-14 11:07:48,648 - INFO - Fetching data from CoinMarketCap API...
+[2025-08-14T11:07:48.697+0000] {subprocess.py:93} INFO - 2025-08-14 11:07:48,696 - ERROR - Data ingestion failed: RetryError[<Future at 0xffffae0a5250 state=finished raised ConnectionError>]
+[2025-08-14T11:07:48.698+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T11:07:48.699+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 174, in _new_conn
+[2025-08-14T11:07:48.700+0000] {subprocess.py:93} INFO -     conn = connection.create_connection(
+[2025-08-14T11:07:48.700+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.701+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 72, in create_connection
+[2025-08-14T11:07:48.701+0000] {subprocess.py:93} INFO -     for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+[2025-08-14T11:07:48.701+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.702+0000] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.12/socket.py", line 964, in getaddrinfo
+[2025-08-14T11:07:48.702+0000] {subprocess.py:93} INFO -     for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+[2025-08-14T11:07:48.702+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.703+0000] {subprocess.py:93} INFO - socket.gaierror: [Errno -2] Name or service not known
+[2025-08-14T11:07:48.703+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.703+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-08-14T11:07:48.704+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.704+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T11:07:48.704+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 716, in urlopen
+[2025-08-14T11:07:48.705+0000] {subprocess.py:93} INFO -     httplib_response = self._make_request(
+[2025-08-14T11:07:48.705+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.705+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 404, in _make_request
+[2025-08-14T11:07:48.705+0000] {subprocess.py:93} INFO -     self._validate_conn(conn)
+[2025-08-14T11:07:48.706+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 1061, in _validate_conn
+[2025-08-14T11:07:48.706+0000] {subprocess.py:93} INFO -     conn.connect()
+[2025-08-14T11:07:48.706+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 363, in connect
+[2025-08-14T11:07:48.706+0000] {subprocess.py:93} INFO -     self.sock = conn = self._new_conn()
+[2025-08-14T11:07:48.707+0000] {subprocess.py:93} INFO -                        ^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.707+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connection.py", line 186, in _new_conn
+[2025-08-14T11:07:48.707+0000] {subprocess.py:93} INFO -     raise NewConnectionError(
+[2025-08-14T11:07:48.707+0000] {subprocess.py:93} INFO - urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0xffffae0a5100>: Failed to establish a new connection: [Errno -2] Name or service not known
+[2025-08-14T11:07:48.707+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.708+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-08-14T11:07:48.708+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.708+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T11:07:48.708+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+[2025-08-14T11:07:48.709+0000] {subprocess.py:93} INFO -     resp = conn.urlopen(
+[2025-08-14T11:07:48.709+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^
+[2025-08-14T11:07:48.709+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 802, in urlopen
+[2025-08-14T11:07:48.710+0000] {subprocess.py:93} INFO -     retries = retries.increment(
+[2025-08-14T11:07:48.710+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.710+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 594, in increment
+[2025-08-14T11:07:48.711+0000] {subprocess.py:93} INFO -     raise MaxRetryError(_pool, url, error or ResponseError(cause))
+[2025-08-14T11:07:48.711+0000] {subprocess.py:93} INFO - urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='pro-api.coinmarketcap.com', port=443): Max retries exceeded with url: /v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffae0a5100>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+[2025-08-14T11:07:48.711+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.712+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-08-14T11:07:48.712+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.712+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T11:07:48.713+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 470, in __call__
+[2025-08-14T11:07:48.713+0000] {subprocess.py:93} INFO -     result = fn(*args, **kwargs)
+[2025-08-14T11:07:48.713+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.714+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 52, in fetch_cmc_data
+[2025-08-14T11:07:48.714+0000] {subprocess.py:93} INFO -     response = requests.get(CMC_API_URL, headers=headers, params=params)
+[2025-08-14T11:07:48.714+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.714+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/api.py", line 73, in get
+[2025-08-14T11:07:48.715+0000] {subprocess.py:93} INFO -     return request("get", url, params=params, **kwargs)
+[2025-08-14T11:07:48.715+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.715+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/api.py", line 59, in request
+[2025-08-14T11:07:48.716+0000] {subprocess.py:93} INFO -     return session.request(method=method, url=url, **kwargs)
+[2025-08-14T11:07:48.717+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.718+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+[2025-08-14T11:07:48.719+0000] {subprocess.py:93} INFO -     resp = self.send(prep, **send_kwargs)
+[2025-08-14T11:07:48.719+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.719+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+[2025-08-14T11:07:48.720+0000] {subprocess.py:93} INFO -     r = adapter.send(request, **kwargs)
+[2025-08-14T11:07:48.721+0000] {subprocess.py:93} INFO -         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.721+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+[2025-08-14T11:07:48.722+0000] {subprocess.py:93} INFO -     raise ConnectionError(e, request=request)
+[2025-08-14T11:07:48.722+0000] {subprocess.py:93} INFO - requests.exceptions.ConnectionError: HTTPSConnectionPool(host='pro-api.coinmarketcap.com', port=443): Max retries exceeded with url: /v1/cryptocurrency/listings/latest?start=1&limit=100&convert=USD (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0xffffae0a5100>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+[2025-08-14T11:07:48.723+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.723+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-08-14T11:07:48.723+0000] {subprocess.py:93} INFO - 
+[2025-08-14T11:07:48.724+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-14T11:07:48.724+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 121, in <module>
+[2025-08-14T11:07:48.724+0000] {subprocess.py:93} INFO -     main()
+[2025-08-14T11:07:48.725+0000] {subprocess.py:93} INFO -     ^^^^^^
+[2025-08-14T11:07:48.725+0000] {subprocess.py:93} INFO -   File "/opt/***/project/ingest_cmc.py", line 106, in main
+[2025-08-14T11:07:48.725+0000] {subprocess.py:93} INFO -     crypto_data = fetch_cmc_data()
+[2025-08-14T11:07:48.726+0000] {subprocess.py:93} INFO -                   ^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.726+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 330, in wrapped_f
+[2025-08-14T11:07:48.727+0000] {subprocess.py:93} INFO -     return self(f, *args, **kw)
+[2025-08-14T11:07:48.727+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.728+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 467, in __call__
+[2025-08-14T11:07:48.729+0000] {subprocess.py:93} INFO -     do = self.iter(retry_state=retry_state)
+[2025-08-14T11:07:48.730+0000] {subprocess.py:93} INFO -          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.731+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 368, in iter
+[2025-08-14T11:07:48.731+0000] {subprocess.py:93} INFO -     result = action(retry_state)
+[2025-08-14T11:07:48.731+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^
+[2025-08-14T11:07:48.732+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/tenacity/__init__.py", line 411, in exc_check
+[2025-08-14T11:07:48.732+0000] {subprocess.py:93} INFO -     raise retry_exc from fut.exception()
+[2025-08-14T11:07:48.732+0000] {subprocess.py:93} INFO - tenacity.RetryError: RetryError[<Future at 0xffffae0a5250 state=finished raised ConnectionError>]
+[2025-08-14T11:07:48.797+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-08-14T11:07:48.799+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-14T11:07:48.861+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-08-14T11:07:48.871+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crypto_hourly_pipeline, task_id=ingest_cmc, run_id=scheduled__2025-08-14T10:00:00+00:00, execution_date=20250814T100000, start_date=20250814T110739, end_date=20250814T110748
+[2025-08-14T11:07:48.899+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 146 for task ingest_cmc (Bash command failed. The command returned a non-zero exit code 1.; 11652)
+[2025-08-14T11:07:48.940+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-14T11:07:48.988+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-14T11:07:48.989+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

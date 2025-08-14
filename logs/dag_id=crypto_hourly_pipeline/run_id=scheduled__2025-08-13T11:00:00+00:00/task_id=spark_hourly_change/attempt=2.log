@@ -1,0 +1,80 @@
+[2025-08-13T12:47:10.023+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-08-13T12:47:10.046+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-13T11:00:00+00:00 [queued]>
+[2025-08-13T12:47:10.049+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-13T11:00:00+00:00 [queued]>
+[2025-08-13T12:47:10.049+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 3
+[2025-08-13T12:47:10.055+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): spark_hourly_change> on 2025-08-13 11:00:00+00:00
+[2025-08-13T12:47:10.060+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crypto_hourly_pipeline', 'spark_hourly_change', 'scheduled__2025-08-13T11:00:00+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/crypto_pipeline.py', '--cfg-path', '/tmp/tmp0m1ht6b2']
+[2025-08-13T12:47:10.062+0000] {standard_task_runner.py:91} INFO - Job 60: Subtask spark_hourly_change
+[2025-08-13T12:47:10.062+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=437) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-08-13T12:47:10.064+0000] {standard_task_runner.py:63} INFO - Started process 438 to run task
+[2025-08-13T12:47:10.097+0000] {task_command.py:426} INFO - Running <TaskInstance: crypto_hourly_pipeline.spark_hourly_change scheduled__2025-08-13T11:00:00+00:00 [running]> on host 4ff2f92f44d2
+[2025-08-13T12:47:10.147+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crypto_hourly_pipeline' AIRFLOW_CTX_TASK_ID='spark_hourly_change' AIRFLOW_CTX_EXECUTION_DATE='2025-08-13T11:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-08-13T11:00:00+00:00'
+[2025-08-13T12:47:10.148+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-08-13T12:47:10.157+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-08-13T12:47:10.158+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'cd /opt/***/project && python spark_hourly_change.py']
+[2025-08-13T12:47:10.164+0000] {subprocess.py:86} INFO - Output:
+[2025-08-13T12:47:11.057+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:11,057 - INFO - Starting hourly change calculation...
+[2025-08-13T12:47:11.069+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.12/site-packages/pyspark/bin/load-spark-env.sh: line 68: ps: command not found
+[2025-08-13T12:47:12.504+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-08-13T12:47:12.505+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-08-13T12:47:12.702+0000] {subprocess.py:93} INFO - 25/08/13 12:47:12 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-08-13T12:47:13.578+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:13,577 - INFO - Spark session created successfully
+[2025-08-13T12:47:13.714+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:13,714 - INFO - Successfully read 300 records from PostgreSQL
+[2025-08-13T12:47:17.276+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 8) / 8]                                                                                2025-08-13 12:47:17,275 - INFO - Calculated hourly changes for 300 records
+[2025-08-13T12:47:18.172+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:18,171 - ERROR - Error writing to ClickHouse: Casting to unit-less dtype 'datetime64' is not supported. Pass e.g. 'datetime64[ns]' instead.
+[2025-08-13T12:47:18.176+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:18,172 - ERROR - Hourly change calculation failed: Casting to unit-less dtype 'datetime64' is not supported. Pass e.g. 'datetime64[ns]' instead.
+[2025-08-13T12:47:18.178+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-08-13T12:47:18.178+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 176, in <module>
+[2025-08-13T12:47:18.181+0000] {subprocess.py:93} INFO -     main()
+[2025-08-13T12:47:18.182+0000] {subprocess.py:93} INFO -     ^^^^^^
+[2025-08-13T12:47:18.184+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 164, in main
+[2025-08-13T12:47:18.184+0000] {subprocess.py:93} INFO -     write_to_clickhouse(result_df)
+[2025-08-13T12:47:18.184+0000] {subprocess.py:93} INFO -   File "/opt/***/project/spark_hourly_change.py", line 118, in write_to_clickhouse
+[2025-08-13T12:47:18.186+0000] {subprocess.py:93} INFO -     pandas_df = df.select("ts", "name", "symbol", "price", "market_cap", "pct_1h").toPandas()
+[2025-08-13T12:47:18.186+0000] {subprocess.py:93} INFO -                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.186+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pyspark/sql/pandas/conversion.py", line 251, in toPandas
+[2025-08-13T12:47:18.186+0000] {subprocess.py:93} INFO -     series = series.astype(t, copy=False)
+[2025-08-13T12:47:18.187+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.187+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/generic.py", line 6534, in astype
+[2025-08-13T12:47:18.187+0000] {subprocess.py:93} INFO -     new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+[2025-08-13T12:47:18.187+0000] {subprocess.py:93} INFO -                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.188+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 414, in astype
+[2025-08-13T12:47:18.188+0000] {subprocess.py:93} INFO -     return self.apply(
+[2025-08-13T12:47:18.188+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^
+[2025-08-13T12:47:18.188+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 354, in apply
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -     applied = getattr(b, f)(**kwargs)
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -               ^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 616, in astype
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -     new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.189+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 238, in astype_array_safe
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -     new_values = astype_array(values, dtype, copy=copy)
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 180, in astype_array
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -     values = values.astype(dtype, copy=copy)
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-08-13T12:47:18.190+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.12/site-packages/pandas/core/arrays/datetimes.py", line 720, in astype
+[2025-08-13T12:47:18.191+0000] {subprocess.py:93} INFO -     raise TypeError(
+[2025-08-13T12:47:18.191+0000] {subprocess.py:93} INFO - TypeError: Casting to unit-less dtype 'datetime64' is not supported. Pass e.g. 'datetime64[ns]' instead.
+[2025-08-13T12:47:18.191+0000] {subprocess.py:93} INFO - 2025-08-13 12:47:18,183 - INFO - Closing down clientserver connection
+[2025-08-13T12:47:18.754+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-08-13T12:47:18.757+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-08-13T12:47:18.792+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-08-13T12:47:18.810+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crypto_hourly_pipeline, task_id=spark_hourly_change, run_id=scheduled__2025-08-13T11:00:00+00:00, execution_date=20250813T110000, start_date=20250813T124710, end_date=20250813T124718
+[2025-08-13T12:47:18.840+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 60 for task spark_hourly_change (Bash command failed. The command returned a non-zero exit code 1.; 438)
+[2025-08-13T12:47:18.860+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-08-13T12:47:18.899+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-08-13T12:47:18.900+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
